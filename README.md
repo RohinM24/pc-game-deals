@@ -25,3 +25,13 @@ A PC game deals website built using HTML, CSS and JavaScript.
 Open the project in Visual Studio Code and run `index.html` using Live Server.
 
 An internet connection is required for the live deals section.
+
+
+## Live Website
+
+You can view the deployed PC Game Deals website here:
+
+**[PC Game Deals – Live Website](https://rohinm24.github.io/pc-game-deals/)**
+
+The website is hosted using GitHub Pages.
+
