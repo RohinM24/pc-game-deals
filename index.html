@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Game Deals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loading screen shown when the website opens -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1>PC Game Deals</h1>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <header>
+        <h1>
+            <a href="index.html" class="home-link">PC Game Deals</a>
+        </h1>
+
+        <p class="verse">
+            "Whatever you do, work at it with all your heart."
+        </p>
+    </header>
+
+    <main>
+
+        <!-- Original games and filters -->
+        <section class="deals-section">
+
+            <!-- Quick overview of the games and discounts -->
+            <div class="stats-container" id="stats-container">
+
+                <div class="stat-card">
+                    <h3>Total Games</h3>
+                    <p id="total-games">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Games on Sale</h3>
+                    <p id="games-on-sale">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Biggest Discount</h3>
+                    <p id="biggest-discount">0%</p>
+                </div>
+
+                <div class="stat-card wishlist-stat">
+                    <h3>My Wishlist</h3>
+                    <p class="wishlist-count">0</p>
+                </div>
+
+            </div>
+
+            <!-- Search, filter and sort options -->
+            <div class="games-toolbar">
+
+                <h2>Available Games</h2>
+
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search for a game..."
+                    aria-label="Search games"
+                >
+
+                <select id="store-filter" aria-label="Filter by store">
+                    <option value="all">All Stores</option>
+                    <option value="Steam">Steam</option>
+                    <option value="GOG">GOG</option>
+                    <option value="Epic Games">Epic Games</option>
+                </select>
+
+                <select id="sort-filter" aria-label="Sort games">
+                    <option value="default">Default Order</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="discount">Highest Discount</option>
+                    <option value="alphabetical">Alphabetical: A to Z</option>
+                </select>
+
+                <label class="filter-option">
+                    <input type="checkbox" id="favourites-filter">
+                    Show favourites only
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" id="sale-filter">
+                    Show on-sale games only
+                </label>
+
+            </div>
+
+            <!-- Original game cards are added here by JavaScript -->
+            <div id="game-list" class="game-grid"></div>
+
+        </section>
+
+        <!-- Live deals section powered by CheapShark -->
+       
+<!-- Live deals section powered by CheapShark -->
+<section class="live-deals-section">
+
+    <!-- Live deals dashboard -->
+    <div class="stats-container live-stats-container">
+
+        <div class="stat-card">
+            <h3>Total Live Deals</h3>
+            <p id="live-total-games">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Deals on Sale</h3>
+            <p id="live-games-on-sale">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Biggest Discount</h3>
+            <p id="live-biggest-discount">0%</p>
+        </div>
+
+        <div class="stat-card wishlist-stat">
+            <h3>My Live Wishlist</h3>
+            <p class="live-wishlist-count">0</p>
+        </div>
+
+    </div>
+
+    <!-- Live deals search, filters and sorting -->
+    <div class="games-toolbar live-games-toolbar">
+
+        <h2>Live PC Deals</h2>
+
+        <input
+            type="text"
+            id="live-search-input"
+            placeholder="Search live deals..."
+            aria-label="Search live deals"
+        >
+
+        <select
+            id="live-store-filter"
+            aria-label="Filter live deals by store"
+        >
+            <option value="all">All Stores</option>
+        </select>
+
+        <select
+            id="live-sort-filter"
+            aria-label="Sort live deals"
+        >
+            <option value="default">Default Order</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="discount">Highest Discount</option>
+            <option value="alphabetical">Alphabetical: A to Z</option>
+        </select>
+
+        <label class="filter-option">
+            <input
+                type="checkbox"
+                id="live-favourites-filter"
+            >
+            Show wishlist only
+        </label>
+
+        <label class="filter-option">
+            <input
+                type="checkbox"
+                id="live-sale-filter"
+            >
+            Show on-sale deals only
+        </label>
+
+    </div>
+
+
+    <!-- API status message -->
+    <div
+        id="live-deals-status"
+        class="live-deals-status"
+    >
+        Loading live deals...
+    </div>
+
+
+    <!-- Live deal cards are added here by JavaScript -->
+    <div
+        id="live-deals-list"
+        class="live-deals-grid game-grid"
+    ></div>
+
+    <!-- Live deals pagination -->
+<div id="live-pagination" class="live-pagination">
+
+    <button
+        type="button"
+        id="live-previous-page"
+        class="pagination-button"
+    >
+        Previous
+    </button>
+
+    <span id="live-page-info">
+        Page 1 of 1
+    </span>
+
+    <button
+        type="button"
+        id="live-next-page"
+        class="pagination-button"
+    >
+        Next
+    </button>
+
+</div>
+
+<!-- Load more deals from CheapShark -->
+<div class="live-load-more-container">
+
+    <button
+        type="button"
+        id="live-load-more"
+        class="pagination-button"
+    >
+        Load More Deals
+    </button>
+
+</div>
+
+
+    <!-- CheapShark attribution -->
+    <p class="cheapshark-credit">
+        Deal data provided by
+        <a
+            href="https://www.cheapshark.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >CheapShark</a>
+    </p>
+
+</section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
